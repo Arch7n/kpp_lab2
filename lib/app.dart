@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'core/theme/app_theme.dart';
+import 'features/auth/login_screen.dart';
 
 class ParcelTrackApp extends StatelessWidget {
   const ParcelTrackApp({super.key});
@@ -13,7 +14,7 @@ class ParcelTrackApp extends StatelessWidget {
       theme: AppTheme.light(),
       darkTheme: AppTheme.dark(),
       themeMode: ThemeMode.system,
-      home: const Scaffold(body: Center(child: Text('ParcelTrack'))),
+      home: const LoginScreen(),
     );
   }
 }
