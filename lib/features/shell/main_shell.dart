@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../../core/models/parcel.dart';
+import '../archive/archive_screen.dart';
 import '../home/home_screen.dart';
+import '../parcels/add_parcel_screen.dart';
+import '../parcels/parcel_details_screen.dart';
+import '../parcels/parcels_screen.dart';
 import '../profile/profile_screen.dart';
 
 /// Main screen with the bottom navigation bar
-///
-/// The selected tab index is the widget's state; changing it with
-/// setState() rebuilds only this shell. IndexedStack keeps every tab alive,
-/// so scroll position and switches survive tab changes
 class MainShell extends StatefulWidget {
   const MainShell({super.key});
 
@@ -20,15 +21,33 @@ class _MainShellState extends State<MainShell> {
 
   void _selectTab(int index) => setState(() => _index = index);
 
+  void _openParcel(Parcel parcel) {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => ParcelDetailsScreen(parcel: parcel),
+      ),
+    );
+  }
+
+  void _addParcel() {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(builder: (_) => const AddParcelScreen()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(
         index: _index,
         children: [
-          HomeScreen(onSeeAll: () => _selectTab(1)),
-          const _TabPlaceholder(title: 'Посилки'),
-          const _TabPlaceholder(title: 'Архів'),
+          HomeScreen(
+            onSeeAll: () => _selectTab(1),
+            onAddParcel: _addParcel,
+            onOpenParcel: _openParcel,
+          ),
+          ParcelsScreen(onOpenParcel: _openParcel),
+          const ArchiveScreen(),
           const ProfileScreen(),
         ],
       ),
@@ -58,21 +77,6 @@ class _MainShellState extends State<MainShell> {
           ),
         ],
       ),
-    );
-  }
-}
-
-/// Temporary tab content; real screens are added in stage 4
-class _TabPlaceholder extends StatelessWidget {
-  const _TabPlaceholder({required this.title});
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(title)),
-      body: const Center(child: Text('Екран з’явиться на етапі 4')),
     );
   }
 }
