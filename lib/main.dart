@@ -1,5 +1,10 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:mail_tracker_app/app.dart';
+import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 
-import 'app.dart';
-
-void main() => runApp(const ParcelTrackApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(const ParcelTrackApp()); // твій кореневий віджет як був
+}

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "444055734966",
+    "project_id": "crossplatform-dev-41532",
+    "storage_bucket": "crossplatform-dev-41532.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:444055734966:android:551529859d0d2d14f57417",
+        "android_client_info": {
+          "package_name": "com.example.mail_tracker_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBD7h-Sxo-Sd02RSzGTRFTk6VuvBFkIRhg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
